@@ -4,7 +4,7 @@
 
      markov = new RiMarkov(4);
 
-     RiTa.loadString('../txt/adlib.txt', function (data1) {
+     RiTa.loadString('./adlib.txt', function (data1) {
          markov.loadText(data1);
      });
 
