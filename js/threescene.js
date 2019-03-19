@@ -19,7 +19,7 @@ function init() {
     window.addEventListener('shake', tweencolor, false);
 
 
-    container = document.getElementById('container');
+    container = document.getElementById('three-container');
 
     scene = new THREE.Scene();
 

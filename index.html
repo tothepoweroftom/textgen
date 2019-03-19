@@ -5,6 +5,8 @@
 	<title>Noise</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
 	<style>
 		*{ box-sizing: border-box; margin: 0; padding: 0 }
 			body {
@@ -18,19 +20,35 @@
 			p{ position: absolute; left: 10px; top: 10px; opacity: .5; line-height: 1.4em }
 			p:hover{ opacity: 1 }
 			a{ color: white; text-shadow: 0 1px 0 rgba( 0,0,0,.5 ) }
-			.container {
-				background:transparent;
+			#three-container {
+				z-index: 1;
+			}
+			canvas {
+				width: 100vw;
+				height: 100vh;
+				display: block;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: -9999;
 			}
 		</style>
 </head>
 
 <body>
 
-	<div id="container"></div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+	<div id="three-container">
 
-	 <script src="js/shake.js"></script>
+	</div>
+	<div id=container>
+		<h1 id="question">
+			test
+		</h1>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+
+	<script src="js/shake.js"></script>
 	<script src="js/three.min.js"></script>
 	<script src="js/OrbitControls.js"></script>
 	<script src="js/rita-small.min.js"></script>
@@ -306,12 +324,11 @@ float pnoise(vec3 P, vec3 rep)
 
 	</script>
 
-	<script src="js/threescene.js">
+	<script src="js/threescene.js"></script>
+	<script src="js/textgeneration.js"></script>
 
-	</script>
-	<script src="js/textgeneration.js">
 
-	</script>
+
 
 </body>
 
