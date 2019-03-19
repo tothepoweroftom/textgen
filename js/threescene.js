@@ -1,6 +1,6 @@
-var container, renderer, scene, camera, mesh,background, fov = 45;
+var container, renderer, scene, camera, mesh, background, fov = 45;
 var start = Date.now();
-const PALETTE = ["#E9CE2C","#69A197",  "#ff0000", "#ff00ff", "#FFACE4", "#D3D0CB"];
+const PALETTE = ["#E9CE2C", "#69A197", "#ff0000", "#ff00ff", "#FFACE4", "#D3D0CB"];
 var colorIndex = 0;
 
 window.addEventListener('load', init);
@@ -8,6 +8,16 @@ $('body').dblclick(tweencolor);
 
 
 function init() {
+
+    // setup shaker for mobile
+    var myShakeEvent = new Shake({
+        threshold: 10, // optional shake strength threshold
+        timeout: 1000 // optional, determines the frequency of event generation
+    });
+    myShakeEvent.start();
+
+    window.addEventListener('shake', tweencolor, false);
+
 
     container = document.getElementById('container');
 
@@ -44,7 +54,8 @@ function init() {
 
     });
     background = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 60), new THREE.MeshBasicMaterial({
-        color: 0xD3D0CB    }));
+        color: 0xD3D0CB
+    }));
     background.scale.x = -1;
     background.doubleSided = true;
     scene.add(background);
@@ -70,14 +81,14 @@ function init() {
 }
 
 function tweencolor() {
-    var col = new THREE.Color(PALETTE[colorIndex%PALETTE.length]);
+    var col = new THREE.Color(PALETTE[colorIndex % PALETTE.length]);
     TweenLite.to(background.material.color, 1, {
-      r: col.r,
-      g: col.g,
-      b: col.b,
-      onComplete: function() {
-          colorIndex+=1;
-      }
+        r: col.r,
+        g: col.g,
+        b: col.b,
+        onComplete: function () {
+            colorIndex += 1;
+        }
     });
 
 
