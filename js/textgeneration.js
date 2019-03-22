@@ -38,7 +38,9 @@
 
  function generate() {
      console.log('generate')
-
+     if (articleIndex >= articles.length) {
+        articleIndex = 0;
+    }
      if (!markov.ready()) return;
 
      let questionNouns = getNounsFromArticles(articles);
