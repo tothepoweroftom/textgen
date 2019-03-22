@@ -115,7 +115,7 @@
 
      let verb = verbs[0] ? verbs[0] : ' '
      let noun = nouns[0] ? nouns[0] : ' '
-     let adverb = adj[0] ? adj[0] : ' a '
+     let adverb = adj[0] ? adj[0] : '  '
 
      articleIndex += 1;
 
