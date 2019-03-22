@@ -1,5 +1,6 @@
  var lines, markov;
  var articles, articleIndex;
+ articleIndex =0;
 
  $(document).ready(function () {
 
@@ -21,7 +22,7 @@
 
      markov = new RiMarkov(4);
 
-     RiTa.loadString('txt/adlib.txt', function (data1) {
+     RiTa.loadString('./adlib.txt', function (data1) {
          markov.loadText(data1);
      });
 
@@ -36,12 +37,89 @@
  });
 
  function generate() {
+     console.log('generate')
 
      if (!markov.ready()) return;
 
-     lines = markov.generateSentences(2);
+     let questionNouns = getNounsFromArticles(articles);
+
+     lines = markov.generateSentences(1);
      console.log(lines);
-     $('#question').text(lines[0]);
+     let formedQuestion = formQuestion(questionNouns, lines);
+
+     $('#question').text(formedQuestion);
+
+
+ }
+
+ function getNounsFromArticles(articles) {
+     let topArticle = articles[articleIndex].title;
+     console.log(topArticle);
+     let split = RiTa.tokenize(topArticle);
+     let tags = RiTa.getPosTags(topArticle);
+     let nouns = [];
+     tags.forEach((element, index) => {
+         // console.log(element);
+         if (element.includes("nn")) {
+             nouns.push(split[index]);
+         }
+     });
+
+     console.log(nouns);
+     let question = "";
+     // this.lstm.generate(this.question)
+
+     if (nouns.length > 1) {
+         question = `${nouns[0]} ${nouns[1]}`;
+     } else {
+         question = ` ${nouns[0]}`;
+     }
+
+     return question;
+ }
+
+ function formQuestion(qNouns, markovText) {
+    console.log(qNouns)
+
+     let split = RiTa.tokenize(markovText[0]);
+     let tags = RiTa.getPosTags(markovText[0]);
+     let nouns = [];
+     let verbs = [];
+     let adj = []
+     let seed = articles[articleIndex]
+
+
+
+     tags.forEach((element, index) => {
+         if (element.includes("nn")) {
+             if (split[index].length > 4) {
+
+                 nouns.push(split[index]);
+             }
+         }
+         if (element.includes("vb")) {
+             if (split[index].length > 4) {
+                 verbs.push(split[index]);
+
+             }
+         }
+         if (element.includes("jj") || element.includes("rb")) {
+             if (split[index].length > 4) {
+                 adj.push(split[index]);
+
+             }
+         }
+
+     });
+
+
+     let verb = verbs[0] ? verbs[0] : ' '
+     let noun = nouns[0] ? nouns[0] : ' '
+     let adverb = adj[0] ? adj[0] : ' a '
+
+     articleIndex += 1;
+
+     return "What if " + qNouns + ` could be ${adverb} ${verb} ${noun} ?`;
 
 
  }
