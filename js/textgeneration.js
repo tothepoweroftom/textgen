@@ -6,7 +6,7 @@
 
      var url =
          "https://newsapi.org/v2/top-headlines?" +
-         "country=ie&" +
+         "country=us&" +
          "apiKey=9097f737932c4681bd54a2ed6a71dbf1";
      fetch(url)
          .then(response => {
