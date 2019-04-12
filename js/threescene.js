@@ -1,10 +1,13 @@
 var container, renderer, scene, camera, mesh, background, fov = 45;
 var start = Date.now();
-const PALETTE = ["#E9CE2C", "#69A197", "#ff0000", "#ff00ff", "#FFACE4", "#D3D0CB"];
+const PALETTE = ["#ACBCC6", "#96D3AE", "#004835", "#CED0CA", "#0e3cff", "#464646"];
 var colorIndex = 0;
-
+var timeMultiplier = 0.0005;
 window.addEventListener('load', init);
 $('body').dblclick(tweencolor);
+var weight = {}
+    weight.value = 2.0
+
 
 
 function init() {
@@ -61,6 +64,7 @@ function init() {
     scene.add(background);
 
     mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(20, 5), material);
+    mesh.scale.set(0.9,0.9,0.9);
     scene.add(mesh);
 
     renderer = new THREE.WebGLRenderer({
@@ -72,13 +76,36 @@ function init() {
 
     container.appendChild(renderer.domElement);
 
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    // controls.enableZoom = false;
 
     window.addEventListener('resize', onWindowResize, false);
+
+    
+
+
+    // $('.body-text').scroll(function () {
+    //     var scrollTop = $(window).scrollTop();
+    //     var height = $(window).height();
+
+    //     $('.body-text').css({
+    //         'opacity': ((height - scrollTop) / height)
+    //     }); 
+
+    //  });
 
     render();
 
 }
+
+$(window).scroll(function (event) {
+    var scroll = $(window).scrollTop();
+    console.log(scroll)
+
+    mesh.rotation.y = scroll/100;
+    camera.position.z = 100 + scroll/10;
+    // Do something
+});
 
 function tweencolor() {
     var col = new THREE.Color(PALETTE[colorIndex % PALETTE.length]);
@@ -90,6 +117,24 @@ function tweencolor() {
             colorIndex += 1;
         }
     });
+
+    TweenLite.to(weight, 1, {
+        value: 5.0 + Math.random()*5,
+ 
+        onComplete: function () {
+            TweenLite.to(weight, 1, {
+                value: 2.0
+            })
+        }
+    });
+
+
+    // event trigger
+    console.log(document.getElementsByClassName('squiggle'));
+    $(".squiggle").toggleClass("squiggle-animation-class-a");
+        $(".squiggle").toggleClass("squiggle-animation-class-b");
+
+    // $(".squiggle").switchClass("squiggle-animation-class-a", "squiggle-animation-class-b");
 
 
 }
@@ -104,8 +149,8 @@ var start = Date.now();
 
 function render() {
 
-    material.uniforms['time'].value = .0005 * (Date.now() - start);
-    material.uniforms['weight'].value = 2.0 + 1.0 * (.5 + .5 * Math.sin(.00025 * (Date.now() - start)));
+    material.uniforms['time'].value = timeMultiplier * (Date.now() - start);
+    material.uniforms['weight'].value = weight.value, + 1.0 * (.5 + .5 * Math.sin(.00025 * (Date.now() - start)));
 
 
     renderer.render(scene, camera);

@@ -22,9 +22,8 @@
 
      markov = new RiMarkov(4);
 
-     RiTa.loadString('./adlib.txt', function (data1) {
-         markov.loadText(data1);
-     });
+         markov.loadText(adlibtext);
+     
 
      $('body').dblclick(generate);
      var myShakeEvent2 = new Shake({
