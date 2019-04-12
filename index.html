@@ -14,11 +14,8 @@
 
   <!-- AOS Package -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-	<script src="js/rellax.min.js"></script>
-  <script>
-    // Accepts any class name
-    var rellax = new Rellax('.rellax');
-  </script>
+
+
 
   <!-- Orb Styles --> 
 	<style>
@@ -146,26 +143,28 @@
     </svg>
 
     <!-- Cyclops -->
+    <div>
+      <svg id="cyclops" viewBox="0 0 47.5 110">
+        <style type="text/css">
+          .st0{fill:black;}
+          .st1{fill:white;}
+        </style>
+        <polygon class="st0" points="47.36,20 40.53,20 31.76,20 31.76,0 15.81,0 15.81,20 7.04,20 0.04,20 0.03,20 0.03,33.09 0.04,33.09 
+          0.04,54.96 7.04,54.96 7.04,33.09 10.64,33.09 10.64,100 21.01,100 21.01,59.55 26.55,59.55 26.55,100 36.93,100 36.93,33.09 
+          40.53,33.09 40.53,54.96 47.53,54.96 47.53,20 "/>
+        <g>
+          <path class="st1" d="M23.78,3.98c-2.69,0.01-5.29,1.82-5.29,3.85c0,2.03,2.52,3.79,5.23,3.87c2.79-0.07,5.35-1.84,5.35-3.87
+            C29.07,5.8,26.47,3.95,23.78,3.98z M23.78,10.22c-1.44,0-2.6-1.16-2.6-2.6s1.16-2.6,2.6-2.6c1.44,0,2.6,1.16,2.6,2.6
+            S25.22,10.22,23.78,10.22z"/>
+          <ellipse class="st0" cx="23.78" cy="7.62" rx="2.6" ry="2.6"/>
+        </g>
+        </svg>
+    </div>
 
-    <svg id="cyclops" viewBox="0 0 47.5 100">
-    <style type="text/css">
-      .st0{fill:black;}
-      .st1{fill:white;}
-    </style>
-    <polygon class="st0" points="47.36,20 40.53,20 31.76,20 31.76,0 15.81,0 15.81,20 7.04,20 0.04,20 0.03,20 0.03,33.09 0.04,33.09 
-      0.04,54.96 7.04,54.96 7.04,33.09 10.64,33.09 10.64,100 21.01,100 21.01,59.55 26.55,59.55 26.55,100 36.93,100 36.93,33.09 
-      40.53,33.09 40.53,54.96 47.53,54.96 47.53,20 "/>
-    <g>
-      <path class="st1" d="M23.78,3.98c-2.69,0.01-5.29,1.82-5.29,3.85c0,2.03,2.52,3.79,5.23,3.87c2.79-0.07,5.35-1.84,5.35-3.87
-        C29.07,5.8,26.47,3.95,23.78,3.98z M23.78,10.22c-1.44,0-2.6-1.16-2.6-2.6s1.16-2.6,2.6-2.6c1.44,0,2.6,1.16,2.6,2.6
-        S25.22,10.22,23.78,10.22z"/>
-      <ellipse class="st0" cx="23.78" cy="7.62" rx="2.6" ry="2.6"/>
-    </g>
-    </svg>
 
     <!-- Imagination of Things Logo Text -->
-
-    <h3 id="cyclops-text">Imagination of Things is a <a href="" target="blank">design fiction</a> studio</h3>
+    <br/>
+    <h3 style="margin-top:20px;" id="cyclops-text" >Imagination of Things is a <a href="" target="blank">design fiction</a> studio</h3>
 
   </section>
 
@@ -175,7 +174,7 @@
   <div id="second">
 
     <!-- Intro Text 01 -->
-    <div class="body-text" data-aos="fade-up" data-rellax-speed="-4" >
+    <div class="body-text" data-aos="fade-up" >
       <h2>Imagination of Things is a creative studio that uses design, fiction, and technology to craft meaningful stories.</h2>
     </div>
 
@@ -550,6 +549,7 @@ float pnoise(vec3 P, vec3 rep)
 
 	<script src="js/threescene.js"></script>
 	<script src="js/textgeneration.js"></script>
+
 
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

@@ -100,7 +100,6 @@ function init() {
 
 $(window).scroll(function (event) {
     var scroll = $(window).scrollTop();
-    console.log(scroll)
 
     mesh.rotation.y = scroll/100;
     camera.position.z = 100 + scroll/10;
