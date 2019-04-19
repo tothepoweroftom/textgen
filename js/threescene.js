@@ -8,10 +8,20 @@ $('body').dblclick(tweencolor);
 var weight = {}
     weight.value = 2.0
 
-
+var accelerometer = {alpha:0, beta:0, gamma:0}
+var mobile = false;
+var cursorX;
+var cursorY;
 
 function init() {
-
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        // some code..
+        mobile = true;
+       }
+    document.onmousemove = function(e){
+        cursorX = e.pageX;
+        cursorY = e.pageY;
+    }
     // setup shaker for mobile
     var myShakeEvent = new Shake({
         threshold: 10, // optional shake strength threshold
@@ -34,7 +44,43 @@ function init() {
 
     var panoTexture = new THREE.TextureLoader().load('pano.jpg');
 
+    var gn = new GyroNorm();
+    var args = {
+        frequency:50,					// ( How often the object sends the values - milliseconds )
+        gravityNormalized:true,			// ( If the gravity related values to be normalized )
+        orientationBase:GyroNorm.GAME,		// ( Can be GyroNorm.GAME or GyroNorm.WORLD. gn.GAME returns orientation values with respect to the head direction of the device. gn.WORLD returns the orientation values with respect to the actual north direction of the world. )
+        decimalCount:2,					// ( How many digits after the decimal point will there be in the return values )
+        logger:null,					// ( Function to be called to log messages from gyronorm.js )
+        screenAdjusted:false			// ( If set to true it will return screen adjusted values. )
+    };
 
+    gn.init(args).then(function(){
+      gn.start(function(data){
+        // Process:
+        // data.do.alpha	( deviceorientation event alpha value )
+        // data.do.beta		( deviceorientation event beta value )
+        // data.do.gamma	( deviceorientation event gamma value )
+        // data.do.absolute	( deviceorientation event absolute value )
+
+        accelerometer.alpha = data.do.alpha;
+        accelerometer.beta = data.do.beta;
+        accelerometer.gamma = data.do.gamma;
+    
+        // data.dm.x		( devicemotion event acceleration x value )
+        // data.dm.y		( devicemotion event acceleration y value )
+        // data.dm.z		( devicemotion event acceleration z value )
+    
+        // data.dm.gx		( devicemotion event accelerationIncludingGravity x value )
+        // data.dm.gy		( devicemotion event accelerationIncludingGravity y value )
+        // data.dm.gz		( devicemotion event accelerationIncludingGravity z value )
+    
+        // data.dm.alpha	( devicemotion event rotationRate alpha value )
+        // data.dm.beta		( devicemotion event rotationRate beta value )
+        // data.dm.gamma	( devicemotion event rotationRate gamma value )
+      });
+    }).catch(function(e){
+      // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
+    });
 
     material = new THREE.ShaderMaterial({
 
@@ -150,7 +196,13 @@ function render() {
 
     material.uniforms['time'].value = timeMultiplier * (Date.now() - start);
     material.uniforms['weight'].value = weight.value, + 1.0 * (.5 + .5 * Math.sin(.00025 * (Date.now() - start)));
-
+    if(mobile) {
+    mesh.position.y = THREE.Math.mapLinear(accelerometer.beta, -180, 180, -20, 20);
+    mesh.position.x = THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -20, 20);
+    } else {
+        mesh.position.y = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -5, 5);
+        mesh.position.x = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -5, 5); 
+    }
 
     renderer.render(scene, camera);
     requestAnimationFrame(render);
