@@ -2,6 +2,10 @@
  var articles, articleIndex;
  articleIndex =0;
 
+ var bits = ['could be', 'could', 'should be', 'might be']
+
+//  var standinverbs 
+
  $(document).ready(function () {
 
      var url =
@@ -44,7 +48,8 @@
 
      let questionNouns = getNounsFromArticles(articles);
 
-     lines = markov.generateSentences(1);
+     lines = markov.generateSentences(3);
+     lines = lines[0] + lines[1] + lines[2]
      console.log(lines);
      let formedQuestion = formQuestion(questionNouns, lines);
 
@@ -71,7 +76,9 @@
      // this.lstm.generate(this.question)
 
      if (nouns.length > 1) {
-         question = `${nouns[0]} ${nouns[1]}`;
+         let rand = Math.floor(Math.random()*nouns.length);
+         let rand2 = (rand+1)%nouns.length;
+         question = `${nouns[rand]} ${nouns[rand2]} `;
      } else {
          question = ` ${nouns[0]}`;
      }
@@ -82,8 +89,8 @@
  function formQuestion(qNouns, markovText) {
     console.log(qNouns)
 
-     let split = RiTa.tokenize(markovText[0]);
-     let tags = RiTa.getPosTags(markovText[0]);
+     let split = RiTa.tokenize(markovText);
+     let tags = RiTa.getPosTags(markovText);
      let nouns = [];
      let verbs = [];
      let adj = []
@@ -117,10 +124,16 @@
      let verb = verbs[0] ? verbs[0] : ' '
      let noun = nouns[0] ? nouns[0] : ' '
      let adverb = adj[0] ? adj[0] : '  '
+     let word = bits[Math.floor(Math.random()*bits.length)];
+
+     if(noun === ' ' && adverb === ' ') {
+         noun = adverb ? adverb : 'huge'
+     }
+
 
      articleIndex += 1;
 
-     return "What if " + qNouns + ` could be ${adverb} ${verb} ${noun} ?`;
+     return "What if " + qNouns +  ` ${word}` + ` ${adverb} ${noun} ?`;
 
 
  }
