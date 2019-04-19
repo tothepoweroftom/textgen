@@ -199,9 +199,12 @@ function render() {
     if(mobile) {
     mesh.position.y = THREE.Math.mapLinear(accelerometer.beta, -180, 180, -20, 20);
     mesh.position.x = THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -20, 20);
+
     } else {
         mesh.position.y = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -5, 5);
         mesh.position.x = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -5, 5); 
+        mesh.rotation.x = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -1, 1);
+        mesh.rotation.y = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -1, 1); 
     }
 
     renderer.render(scene, camera);
