@@ -211,7 +211,6 @@ function render() {
         left: 0 + THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -50, 75),
         top:  window.innerHeight/2000 + THREE.Math.mapLinear(accelerometer.beta, -180, 180, -50, 75),
  });
-    } else {
         mesh.position.y = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -5, 5);
         mesh.position.x = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -5, 5); 
         mesh.rotation.x = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -1, 1);

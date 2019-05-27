@@ -202,7 +202,19 @@ h1 h2 h3, a:hover{
   background-color:white;
   border: black 2px solid;
   padding:1% 2.5%;
+  position:relative;
+  left:-1000px;
+  -webkit-transition: left 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+     -moz-transition: left 0.3s ease-out;  /* Firefox 4-15 */
+       -o-transition: left 0.3s ease-out;  /* Opera 10.50–12.00 */
+          transition: left 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
 }
+
+.open {
+  left:0px !important; 
+}
+
+
 
 .body-text img{
 
