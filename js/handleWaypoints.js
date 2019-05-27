@@ -15,7 +15,6 @@ var waypoint = new Waypoint({
         $('#intro2').toggleClass('open-right');
 
 
-
     },
     offset: window.innerHeight/2
 
