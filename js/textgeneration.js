@@ -52,7 +52,7 @@
      console.log(lines);
      let formedQuestion = formQuestion(questionNouns, lines);
 
-     $('#question').text(formedQuestion);
+  
 
 
  }
@@ -121,7 +121,22 @@
 
      articleIndex += 1;
 
-     return "What if " + qNouns +  ` ${word}` + ` ${nouns[0].article} ${adverb} ${noun} ?`;
+     Scrambler({
+        target: '#artNoun',
+        random: [100, 500],
+        speed: 100,
+        text: qNouns
+      });
+
+      Scrambler({
+        target: '#end',
+        random: [100, 500],
+        speed: 100,
+        text: ` ${word} ${nouns[0].article} ${adverb} ${noun} `
+      });
+
+      $("#bit").text = ` ${word}`;
+
 
 
  }
