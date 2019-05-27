@@ -11,6 +11,9 @@
   }
 } */
 
+.icon:hover {
+  color:white;
+}
 
 #app{
 	-webkit-font-smoothing:antialiased;
@@ -142,7 +145,7 @@ h1 {
 
 h2{
 
-	font-family:'Avara_Bold';
+	font-family:'VG5000';
 	font-size:2em;
 	letter-spacing:.1em;
   line-height:1.5em;
@@ -197,24 +200,52 @@ h1 h2 h3, a:hover{
   padding:0 25% 0 38%;
 }
 
+
+/*Body Text*/
+
 .body-text{
   width:40%;
   background-color:white;
   border: black 2px solid;
-  padding:1% 2.5%;
+  padding:1.5% 3%;
   position:relative;
-  left:-1000px;
-  -webkit-transition: left 0.3s ease-out;  /* Chrome 1-25, Safari 3.2+ */
-     -moz-transition: left 0.3s ease-out;  /* Firefox 4-15 */
-       -o-transition: left 0.3s ease-out;  /* Opera 10.50–12.00 */
-          transition: left 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+  opacity:0;
+  transition: left 0.3s ease-out, opacity 0.3s ease-out;
+  
 }
 
-.open {
-  left:0px !important; 
+.body-text-static{
+  width:40%;
+  background-color:white;
+  border: black 2px solid;
+  padding:1.5% 3%;
+  position:relative;
+  opacity:1;
+  transition: left 0.3s ease-out, opacity 0.3s ease-out;
+  
 }
 
+#practice {
+  left:50vw;
+  bottom: 200px;
+}
 
+#experiment {
+  left:5vw;
+}
+.open-left{
+  left:0px !important;
+  opacity:1;
+ }
+
+ .open-right{
+  left:0px !important;
+  opacity:1;
+ }
+
+ .transition{
+
+ }
 
 .body-text img{
 
@@ -223,45 +254,92 @@ h1 h2 h3, a:hover{
 .body-text:nth-of-type(1){
   margin-top:100vh;
   margin-left:10%;
-
+  left:-520px;
 }
 
 .body-text:nth-of-type(2){
   margin-top:30%;
   margin-left:30%;
+  /* left:150vw; */
+  left:520px;
 
 }
 
 .body-text:nth-of-type(3){
   margin-top:30%;
   margin-left:35%;
+  left:520px;
 
+  /* left:150vw; */
 }
 
 .body-text:nth-of-type(4){
   margin-top:30%;
   margin-left:15%;
-
+  left:-520px;
 }
 
 .body-text:nth-of-type(5){
-  margin-top:30%;
-  margin-left:45%;
-  width:24%;
+  margin-top:0;
+  margin-left:30%;
+  height:100vh;
+  padding-top:15%;
+  background-color:transparent;
+  border: none;
+  color:none;
 }
 
-.body-text:nth-of-type(6){
-  margin-top:-3%;
-  margin-left:8%;
-  width:18%;
+
+@media screen and (max-width: 600px) {
+  #practice {
+    left:10vw;
+  }
+
+  .body-text{
+    width:70%;
+    background-color:white;
+    border: black 2px solid;
+    padding:1% 2.5%;
+    font-size: .8em; 
+  }
+
+
+  .body-text:nth-of-type(1){
+    margin-top:50vh;
+    margin-left:10%;
+  
+  }
+  
+  .body-text:nth-of-type(2){
+    margin-top:30%;
+    margin-left:10%;
+  
+  }
+  
+  .body-text:nth-of-type(3){
+    margin-top:30%;
+    margin-left:10%;
+  
+  }
+  
+  .body-text:nth-of-type(4){
+    margin-top:30%;
+    margin-left:10%;
+  
+  }
+  
+  .body-text:nth-of-type(5){
+    margin-top:30%;
+    margin-left:10%;
+    width:70% !important;
+    font-size:1em;
+    height:90vh;
+  }
+
+
 }
 
-.body-text:nth-of-type(7){
-  margin-top:-5%;
-  margin-left:65%;
-  margin-bottom:8%;
-  width:20%;
-}
+
 
 
 
@@ -275,7 +353,7 @@ h1 h2 h3, a:hover{
 
 #shake {
   animation: shake 2s both infinite;
-  transform: rotate(0deg);
+  transform: rotate(4deg);
   backface-visibility: hidden;
   font-family:'VG5000';
   font-size:3em;
@@ -337,70 +415,14 @@ h1 h2 h3, a:hover{
   
   }
 
-  .body-text{
-    width:70%;
-    background-color:white;
-    border: black 2px solid;
-    padding:1% 2.5%;
-    /* font-size: 1em; */
-  }
-
-
-  .body-text:nth-of-type(1){
-    margin-top:100vh;
-    margin-left:10%;
-  
-  }
-  
-  .body-text:nth-of-type(2){
-    margin-top:30%;
-    margin-left:10%;
-  
-  }
-  
-  .body-text:nth-of-type(3){
-    margin-top:30%;
-    margin-left:15%;
-  
-  }
-  
-  .body-text:nth-of-type(4){
-    margin-top:30%;
-    margin-left:15%;
-  
-  }
-  
-  .body-text:nth-of-type(5){
-    margin-top:30%;
-    margin-left:15%;
-    width:60% !important;
-  }
-  
-  .body-text:nth-of-type(6){
-    margin-top:10%;
-    margin-left:15%;
-    width:80%;
-    /* width:18%; */
-  }
-  
-  .body-text:nth-of-type(7){
-    margin-top:10%;
-    margin-left:15%;
-    margin-bottom:8%;
-    width:80%
-    /* width:20%; */
-  }
-
 }
+
+
 
 
 
 @keyframes shake {
   0% {
-    transform: rotate(0deg);
-  }
-  
-  5% {
     transform: rotate(4deg);
   }
 
@@ -409,16 +431,16 @@ h1 h2 h3, a:hover{
   }
 
   20% {
-    transform: rotate(1deg);
+    transform: rotate(8deg);
   }
   40%{
     transform: rotate(-1deg);
   }
   50% {
-    transform: rotate(0deg);
+    transform: rotate(4deg);
   }
   100%{
-    transform: rotate(0deg);
+    transform: rotate(4deg);
   }
 }
 
@@ -432,13 +454,22 @@ h1 h2 h3, a:hover{
   z-index:2;
   color:black;
   text-transform:uppercase;
-  letter-spacing:.2em;
+}
+
+.click-hold-a{
+  font-size:1em;
+  letter-spacing: .1em;
+  animation: click-hold-animation-a .2s linear 1;
+}
+
+.click-hold-b{
+  font-size:1em;
+  letter-spacing: .1em;
+  animation: click-hold-animation-b .2s linear 1;
 }
 
 .click-hold{
-  animation: hold 1s forwards infinite;
   font-family:'VG5000';
-  font-size:1em;
 }
 
 @media screen and (max-width: 900px) {
@@ -448,16 +479,32 @@ h1 h2 h3, a:hover{
 
 }
 
-@keyframes hold {
-  0% 100% {
-    letter-spacing: 10px;
+@keyframes click-hold-animation-a{
+  0% {
+    letter-spacing: .1em;
   }
-
-  20% 60%{
-    letter-spacing: 20px;
+  50% {
+    letter-spacing: .2em;
   }
-
+  100% {
+    letter-spacing: .1em;
+  }
 }
+
+@keyframes click-hold-animation-b{
+  0% {
+    letter-spacing: .1em;
+  }
+  50% {
+    letter-spacing: .2em;
+  }
+  100% {
+    letter-spacing: .1em;
+  }
+}
+
+
+
 
 /*Main Question Styles*/
 
@@ -484,22 +531,36 @@ h1 h2 h3, a:hover{
   stroke-linecap:round;
   stroke-miterlimit:10;
   transform:rotate(-20deg);
-  stroke-dasharray: 180;
-  stroke-dashoffset: 180;
+}
+
+@media screen and (max-width: 992px) {
+  #squiggle{
+    width:12%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #squiggle{
+    width:20%;
+  }
 }
 
 .squiggle-animation-class-a {
-    animation: squiggle-animation-a 3s linear  infinite;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+    animation: squiggle-animation-a 2s linear  1;
 
 }
 .squiggle-animation-class-b {
-    animation: squiggle-animation-b 3s linear  infinite;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 182;
+    animation: squiggle-animation-b 2s linear  1;
 
 }
 
 @keyframes squiggle-animation-a {
   0% {
-    stroke-dashoffset: 180;
+    stroke-dashoffset: 182;
   }
   30% {
     stroke-dashoffset: 0;
@@ -512,7 +573,7 @@ h1 h2 h3, a:hover{
 
 @keyframes squiggle-animation-b {
   0% {
-    stroke-dashoffset: -180;
+    stroke-dashoffset: -182;
   }
   30% {
     stroke-dashoffset: 0;
@@ -532,19 +593,19 @@ h1 h2 h3, a:hover{
 #squiggle:nth-of-type(2) {
   left: 12%;
   top: 15%;
-  animation-delay: .2s;
+  animation-delay: .1s;
 }
 
 #squiggle:nth-of-type(3) {
   left: 30%;
   top: 50%;
-  animation-delay: .5s;
+  animation-delay: .2s;
 }
 
 #squiggle:nth-of-type(4) {
   left: 35%;
   top: 80%;
-  animation-delay: .8s;
+  animation-delay: .3s;
 }
 
 #squiggle:nth-of-type(5) {
@@ -554,15 +615,15 @@ h1 h2 h3, a:hover{
 }
 
 #squiggle:nth-of-type(6) {
-  left: 80%;
+  left: 85%;
   top: 60%;
-  animation-delay: 1.5s;
+  animation-delay: .4s;
 }
 
 #squiggle:nth-of-type(7) {
-  left: 55%;
-  top: 20%;
-  animation-delay: 2s;
+  left: 65%;
+  top: 15%;
+  animation-delay: .5s;
 }
 
 /*Cyclops*/
@@ -692,7 +753,7 @@ position: relative;
 /*Icons*/
 
 #icons{
-	margin:10% ;
+	margin:12% ;
 }
 
 .icon{

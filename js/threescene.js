@@ -1,6 +1,6 @@
 var container, renderer, scene, camera, mesh, background, fov = 45;
 var start = Date.now();
-const PALETTE = ["#ACBCC6", "#96D3AE", "#004835", "#CED0CA", "#0e3cff", "#464646"];
+const PALETTE = ["#30ecf1", "#eecbad", "#2ba955", "#f4ff89", "#2963ff", "#f022fe"];
 var colorIndex = 0;
 var timeMultiplier = 0.0005;
 window.addEventListener('load', init);
@@ -181,13 +181,16 @@ function tweencolor() {
         }
     });
 
-
     // event trigger
-    console.log(document.getElementsByClassName('squiggle'));
+
+
+    $(".click-hold").toggleClass("click-hold-a");
+    $(".click-hold").toggleClass("click-hold-b");
+
+
+
     $(".squiggle").toggleClass("squiggle-animation-class-a");
         $(".squiggle").toggleClass("squiggle-animation-class-b");
-
-    // $(".squiggle").switchClass("squiggle-animation-class-a", "squiggle-animation-class-b");
 
 
 }
@@ -210,7 +213,8 @@ function render() {
     $('#follower').css({
         left: 0 + THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -50, 75),
         top:  window.innerHeight/2000 + THREE.Math.mapLinear(accelerometer.beta, -180, 180, -50, 75),
- });
+    }); 
+    } else {
         mesh.position.y = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -5, 5);
         mesh.position.x = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -5, 5); 
         mesh.rotation.x = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -1, 1);
