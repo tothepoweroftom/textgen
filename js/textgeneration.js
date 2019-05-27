@@ -6,7 +6,9 @@
 
 //  var standinverbs 
 
+
  $(document).ready(function () {
+     
 
      var url =
          "https://newsapi.org/v2/top-headlines?" +

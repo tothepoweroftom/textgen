@@ -21,6 +21,11 @@ function init() {
     document.onmousemove = function(e){
         cursorX = e.pageX;
         cursorY = e.pageY;
+        $('#follower').css({
+               left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -50, 150),
+               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -50, 150),
+        });
+
     }
     // setup shaker for mobile
     var myShakeEvent = new Shake({
