@@ -54,14 +54,9 @@
 
     </div>
     <div class="main-text">
-        <div id="follower" style="position: relative;">
-
-            <h1 id="question" class="">
-                What if <span id="artNoun"></span> <span id="bit"></span> <span id="end"></span> ?
-              </h1> 
-        </div>
-
+    <h1 id="question" class=""></h1> 
     </div>
+    
   <section id="first">
     <h1 style="color:black" id="debug"></h1>
 
@@ -69,7 +64,7 @@
 
     <!-- Shake Text (Only Appears in Mobile) -->
 
-    <div id="shake">
+    <div id="shake" class="noselect">
       <svg viewBox="0 0 500 500">
           <path id="curve" x="0" y="0" width="100%" height="100%" d="M100,250 C125,99 378,97 400,250" />
         
@@ -170,7 +165,7 @@
 
     <!-- Imagination of Things Logo Text -->
     <br/>
-    <h3 style="margin-top:20px;" id="cyclops-text" >Imagination of Things is a <a href="" target="blank">design fiction</a> studio</h3>
+    <h3 style="margin-top:20px;" id="cyclops-text" class="noselect" >Imagination of Things is a design fiction studio</h3>
 
   </section>
 
@@ -203,9 +198,15 @@
       <h3>Full portfolio on request.</h3>
     </div>
 
-    <!-- Icons -->
+
+    <!-- Links + Description -->
 
     <div class="body-text" data-aos="fade">
+
+      <h5>This website is an experiment that takes the most searched words on Google in your country and articulates it as a “what if” speculation using a Machine Learning model trained with articles by authors that inspire our practice.</h5>
+
+      <h5>Our practice is heavily influenced by some key experiences: the former poetic innovation lab at <a href="https://www.cpbgroup.com/" target="blank">CP+B</a>; the work system from <a href="https://mesa.do/" target="blank">MESA</a>; the approach to design and technology fostered at <a href="https://tisch.nyu.edu/itp" target="blank">ITP/NYU</a>. We are based in <a href="https://www.google.com/maps/place/Imagination+of+Things/@52.3907899,4.8479292,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5e3c43cfd080f:0xd3da102b90039c2a!8m2!3d52.3907899!4d4.8501179" target="blank">Amsterdam</a> with projects in places like São Paulo, Boulder, Lisbon, Eindhoven, Maastricht, Turin, and Strasbourg.</h5>
+
       <div id="icons">
         <div class="container">
 
@@ -254,19 +255,11 @@
       </div>
     </div>
 
-    <!-- About the Website -->
-
-    <div class="body-text" data-aos="fade" >
-      <h5>This website is an experiment that takes the most searched words on Google in your country and articulates it as a “what if” speculation using a Machine Learning model trained with articles by authors that inspire our practice.</h5>
-    </div>
-
-    <!-- About our Studio -->
-
-    <div class="body-text" data-aos="fade">
-      <h5>Our practice is heavily influenced by some key experiences: the former poetic innovation lab at <a href="https://www.cpbgroup.com/" target="blank">CP+B</a>; the work system from <a href="https://mesa.do/" target="blank">MESA</a>; the approach to design and technology fostered at <a href="https://tisch.nyu.edu/itp" target="blank">ITP/NYU</a>. We are based in <a href="https://www.google.com/maps/place/Imagination+of+Things/@52.3907899,4.8479292,17z/data=!3m1!4b1!4m5!3m4!1s0x47c5e3c43cfd080f:0xd3da102b90039c2a!8m2!3d52.3907899!4d4.8501179" target="blank">Amsterdam</a> with projects in places like São Paulo, Boulder, Lisbon, Eindhoven, Maastricht, Turin, and Strasbourg.</h5>
-    </div>
+    
+    
 
 </div>
+
 
 
 
@@ -553,8 +546,7 @@ float pnoise(vec3 P, vec3 rep)
 
 	</script>
   <script src="js/gyronorm.complete.min.js"></script>
-  <script src="https://unpkg.com/compromise"></script>
-  <script src="js/scrambler.min.js"></script>
+
 	<script src="js/threescene.js"></script>
 	<script src="js/textgeneration.js"></script>
 
