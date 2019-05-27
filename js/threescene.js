@@ -22,8 +22,8 @@ function init() {
         cursorX = e.pageX;
         cursorY = e.pageY;
         $('#follower').css({
-               left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -50, 150),
-               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -50, 150),
+               left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -100, 150),
+               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -100, 200),
         });
 
     }
