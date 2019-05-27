@@ -2,6 +2,7 @@ var waypoint = new Waypoint({
     element: document.getElementById('intro1'),
     handler: function(direction) {
         $('#intro1').toggleClass('open-left');
+        $('#question').show();
 
 
     },
@@ -13,6 +14,7 @@ var waypoint = new Waypoint({
     handler: function(direction) {
         $('#intro1').toggleClass('open-left');
         $('#intro2').toggleClass('open-right');
+        $('#question').hide();
 
 
     },
