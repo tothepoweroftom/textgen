@@ -82,32 +82,35 @@ function init() {
       // Catch if the DeviceOrientation or DeviceMotion is not supported by the browser or device
     });
 
-    material = new THREE.ShaderMaterial({
+    // material = new THREE.ShaderMaterial({
 
-        uniforms: {
-            tShine: {
-                type: "t",
-                value: panoTexture
-            },
-            time: {
-                type: "f",
-                value: 0
-            },
-            weight: {
-                type: "f",
-                value: 0
-            }
-        },
-        vertexShader: document.getElementById('vertexShader').textContent,
-        fragmentShader: document.getElementById('fragmentShader').textContent
+    //     uniforms: {
+    //         tShine: {
+    //             type: "t",
+    //             value: panoTexture
+    //         },
+    //         time: {
+    //             type: "f",
+    //             value: 0
+    //         },
+    //         weight: {
+    //             type: "f",
+    //             value: 0
+    //         }
+    //     },
+    //     vertexShader: document.getElementById('vertexShader').textContent,
+    //     fragmentShader: document.getElementById('fragmentShader').textContent
 
-    });
+    // });
+
+
     background = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 60), new THREE.MeshBasicMaterial({
         color: 0xD3D0CB
     }));
     background.scale.x = -1;
     background.doubleSided = true;
     scene.add(background);
+    material = new THREE.MeshBasicMaterial({color: 0x000000});
 
     mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(20, 5), material);
     mesh.scale.set(0.9,0.9,0.9);
@@ -194,8 +197,8 @@ var start = Date.now();
 
 function render() {
 
-    material.uniforms['time'].value = timeMultiplier * (Date.now() - start);
-    material.uniforms['weight'].value = weight.value, + 1.0 * (.5 + .5 * Math.sin(.00025 * (Date.now() - start)));
+    // material.uniforms['time'].value = timeMultiplier * (Date.now() - start);
+    // material.uniforms['weight'].value = weight.value, + 1.0 * (.5 + .5 * Math.sin(.00025 * (Date.now() - start)));
     if(mobile) {
     mesh.position.y = THREE.Math.mapLinear(accelerometer.beta, -180, 180, -20, 20);
     mesh.position.x = THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -20, 20);

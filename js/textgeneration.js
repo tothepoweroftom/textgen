@@ -2,7 +2,7 @@
  var articles, articleIndex;
  articleIndex =0;
 
- var bits = ['could be', 'could', 'should be', 'might be']
+ var bits = ['could be', 'was']
 
 //  var standinverbs 
 
@@ -47,9 +47,8 @@
      if (!markov.ready()) return;
 
      let questionNouns = getNounsFromArticles(articles);
-
-     lines = markov.generateSentences(3);
-     lines = lines[0] + lines[1] + lines[2]
+     lines = markov.generateSentences(4);
+     lines = lines[0] + " " +  lines[1] + " " + lines[2] + " " + lines[3];
      console.log(lines);
      let formedQuestion = formQuestion(questionNouns, lines);
 
@@ -60,58 +59,49 @@
 
  function getNounsFromArticles(articles) {
      let topArticle = articles[articleIndex].title;
-     console.log(topArticle);
-     let split = RiTa.tokenize(topArticle);
-     let tags = RiTa.getPosTags(topArticle);
-     let nouns = [];
-     tags.forEach((element, index) => {
-         // console.log(element);
-         if (element.includes("nn")) {
-             nouns.push(split[index]);
-         }
-     });
+     let doc = window.nlp(topArticle);
 
-     console.log(nouns);
-     let question = "";
-     // this.lstm.generate(this.question)
 
-     if (nouns.length > 1) {
-         let rand = Math.floor(Math.random()*nouns.length);
-         let rand2 = (rand+1)%nouns.length;
-         question = `${nouns[rand]} ${nouns[rand2]} `;
-     } else {
-         question = ` ${nouns[0]}`;
+    //  Get nouns
+     let nouns = doc.nouns().data()
+
+
+     let rand = Math.floor(Math.random()*nouns.length);
+     let word = nouns[rand].main
+     if(word.includes("\'")){
+         word = noun[Math.floor(Math.random()*nouns.length)].main;
      }
 
-     return question;
- }
+     console.log(nouns);
+     let question = `${word}`;
 
+
+     return question;
+ 
+
+
+ }
  function formQuestion(qNouns, markovText) {
     console.log(qNouns)
+    let text = window.nlp(markovText);
 
      let split = RiTa.tokenize(markovText);
      let tags = RiTa.getPosTags(markovText);
-     let nouns = [];
      let verbs = [];
      let adj = []
      let seed = articles[articleIndex%articles.length]
-
+    let nouns = text.nouns().data();
 
 
      tags.forEach((element, index) => {
-         if (element.includes("nn")) {
-             if (split[index].length > 4) {
-
-                 nouns.push(split[index]);
-             }
-         }
-         if (element.includes("vb")) {
+  
+         if (element.includes("vbz")) {
              if (split[index].length > 4) {
                  verbs.push(split[index]);
 
              }
          }
-         if (element.includes("jj") || element.includes("rb")) {
+         if (element.includes("jjs") || element.includes("rbs")) {
              if (split[index].length > 4) {
                  adj.push(split[index]);
 
@@ -122,18 +112,16 @@
 
 
      let verb = verbs[0] ? verbs[0] : ' '
-     let noun = nouns[0] ? nouns[0] : ' '
+     let noun = nouns[0].main ? nouns[0].main : ' '
+     let article = nouns[0].article ? nouns[0].article : 'the'
      let adverb = adj[0] ? adj[0] : '  '
      let word = bits[Math.floor(Math.random()*bits.length)];
 
-     if(noun === ' ' && adverb === ' ') {
-         noun = adverb ? adverb : 'huge'
-     }
 
 
      articleIndex += 1;
 
-     return "What if " + qNouns +  ` ${word}` + ` ${adverb} ${noun} ?`;
+     return "What if " + qNouns +  ` ${word}` + ` ${nouns[0].article} ${adverb} ${noun} ?`;
 
 
  }
