@@ -10,14 +10,17 @@
 
 
  $(document).ready(function () {
+    $('#side-cyclops').fadeOut();
 
      $(window).scroll(function() {
         if ($(document).scrollTop() < 100) {
             $('#roboto').fadeIn();
-            $('#side-cyclops').fadeOut();
 
 
             // $('#question').fadeIn();
+
+        } else if($(document).scrollTop() < window.innerHeight) {
+            $('#side-cyclops').fadeOut();
 
         } else {
             $('#roboto').fadeOut();
