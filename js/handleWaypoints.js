@@ -17,6 +17,7 @@ var waypoint = new Waypoint({
     handler: function(direction) {
         $('#intro1').toggleClass('open-left');
         $('#question').show();
+        $('#side-cyclops').fadeOut();
 
 
     },

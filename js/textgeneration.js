@@ -10,14 +10,13 @@
 
 
  $(document).ready(function () {
-    if($(window).scrollTop() < 10) {
-        $('#roboto').fadeIn();
-        $('#side-cyclops').fadeOut();
-     }
+
      $(window).scroll(function() {
         if ($(document).scrollTop() < 100) {
             $('#roboto').fadeIn();
-            
+            $('#side-cyclops').fadeOut();
+
+
             // $('#question').fadeIn();
 
         } else {
