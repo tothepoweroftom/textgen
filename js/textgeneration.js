@@ -10,22 +10,21 @@
 
 
  $(document).ready(function () {
-    $('#side-cyclops').fadeOut();
+    $('#cyclops2').fadeOut();
 
      $(window).scroll(function() {
-        if ($(document).scrollTop() < 100) {
-            $('#roboto').fadeIn();
+        //  console.log(window.scrollTop());
+        if ($(document).scrollTop() < 5) {
+            $('#cyclops').fadeIn();
+            $('#cyclops2').fadeOut();
 
-
-            // $('#question').fadeIn();
-
-        } else if($(document).scrollTop() < window.innerHeight) {
-            $('#side-cyclops').fadeOut();
 
         } else {
-            $('#roboto').fadeOut();
+            $('#cyclops').fadeOut();
+
+            // $('#roboto').fadeOut();
             // $('#question').fadeOut();
-            $('#side-cyclops').fadeIn();
+            // $('#side-cyclops').fadeIn();
 
         }
       });

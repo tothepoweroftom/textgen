@@ -17,8 +17,8 @@ var waypoint = new Waypoint({
     handler: function(direction) {
         $('#intro1').toggleClass('open-left');
         $('#question').show();
-        $('#side-cyclops').fadeOut();
 
+        $('#cyclops2').fadeIn();
 
     },
     offset: 3*window.innerHeight/4 
@@ -65,11 +65,11 @@ var waypoint = new Waypoint({
 
 
   var waypoint5 = new Waypoint({
-    element: document.getElementById('social'),
+    element: document.getElementById('reel'),
     handler: function(direction) {
 
         $('#projects').toggleClass('open-right');
-        $('#social').toggleClass('open-left');
+        $('#reel').toggleClass('open-left');
 
 
     },
