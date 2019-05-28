@@ -95,4 +95,4 @@ let preFabNouns = ['a disease',
 'socially acceptable',
 'socially unacceptable',
 'against the law',
-'part of a complex regulation', ]
+'part of a complex regulation']
