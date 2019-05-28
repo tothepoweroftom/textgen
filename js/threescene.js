@@ -1,6 +1,6 @@
 var container, renderer, scene, camera, mesh, background, fov = 45;
 var start = Date.now();
-const PALETTE = ["#30ecf1", "#eecbad", "#2ba955", "#f4ff89", "#2963ff", "#f022fe"];
+const PALETTE = ["#30ecf1", "#eecbad", "#2ba955", "#d4d645", "#2963ff", "#f022fe"];
 var colorIndex = 0;
 var timeMultiplier = 0.0005;
 window.addEventListener('load', init);

@@ -1,3 +1,17 @@
+// var waypointRoboto = new Waypoint({
+//   element: document.getElementById('roboto'),
+//   handler: function(direction) {
+//     $( "#roboto" ).fadeOut( "slow", function() {
+//       // Animation complete.
+//     });
+
+
+//   },
+//   offset: 0
+// })
+
+
+
 var waypoint = new Waypoint({
     element: document.getElementById('intro1'),
     handler: function(direction) {

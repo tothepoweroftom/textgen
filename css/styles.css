@@ -647,6 +647,17 @@ h1 h2 h3, a:hover{
   bottom:10%;
 }
 
+#side-cyclops {
+  width:3%;
+  left:0%;
+  position:absolute;
+  top: 50vh;
+  -webkit-animation: cyclops-anim 4s infinite; /* Safari 4+ */
+  -moz-animation:    cyclops-anim 4s infinite; /* Fx 5+ */
+  -o-animation:      cyclops-anim 4s infinite; /* Opera 12+ */
+  animation:         cyclops-anim 4s infinite; /* IE 10+, Fx 29+ */
+}
+
 #cyclops-text{
   position:absolute;
   text-align:left;
@@ -672,6 +683,13 @@ h1 h2 h3, a:hover{
     padding:0 20%;
     font-size:1.2em;
     line-height:1.3em;
+  }
+
+  #cyclops2 {
+    width:3%;
+    left:0%;
+    position:absolute;
+    top: 50vh;
   }
 }
 
@@ -1012,3 +1030,24 @@ position: relative;
 }
 
 
+
+@-webkit-keyframes cyclops-anim {
+  0%   { left: -100px; }
+  50%  {left: 0px}
+  100% { left: -50px; }
+}
+@-moz-keyframes cyclops-anim {
+  0%   { left: -100px; }
+  50%  {left: 0px}
+  100% { left: -50px; }
+}
+@-o-keyframes cyclops-anim {
+  0%   { left: -100px; }
+  50%  {left: 0px}
+  100% { left: -50px; }
+}
+@keyframes cyclops-anim {
+  0%   { left: -100px; }
+  50%  {left: 0px}
+  100% { left: -50px; }
+}
