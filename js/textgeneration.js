@@ -10,6 +10,19 @@
 
 
  $(document).ready(function () {
+
+    // CHECK FOR DEVICE MOTION
+    if (window.DeviceMotionEvent == undefined) {
+        //No accelerometer is present. Use buttons. 
+        // alert("NO SHAKING BOOTY");
+    
+    }
+    else {
+        // alert("SHAKING BOOTY");
+
+    }
+
+
     $('#cyclops2').fadeOut();
 
      $(window).scroll(function() {
@@ -50,34 +63,44 @@
 
          });
 
-     markov = new RiMarkov(4);
+    //  markov = new RiMarkov(4);
 
-         markov.loadText(adlibtext);
+    //  markov.loadText(adlibtext);
      
 
      $('body').dblclick(generate);
+     $('body').doubletap(()=>{
+         generate();
+         tweencolor();
+         console.log("doubletap");
+     });
+  
+        
+
      var myShakeEvent2 = new Shake({
          threshold: 10, // optional shake strength threshold
          timeout: 1000 // optional, determines the frequency of event generation
      });
      myShakeEvent2.start();
 
+     console.log()
+
      window.addEventListener('shake', generate, false);
  });
 
  function generate() {
-      //console.log('generate')
+      console.log('generate')
      if (articleIndex >= articles.length) {
         articleIndex = 0;
     }
-     if (!markov.ready()) return;
+    //  if (!markov.ready()) return;
 
      let questionNouns = getNounsFromArticles(articles);
      let questionAdjectives = getAdjectivesFromArticles(concatArticleTitles);
-     lines = markov.generateSentences(4);
-     lines = lines[0] + " " +  lines[1] + " " + lines[2] + " " + lines[3];
+    //  lines = markov.generateSentences(4);
+    //  lines = lines[0] + " " +  lines[1] + " " + lines[2] + " " + lines[3];
       //console.log(lines);
-     formQuestion(questionNouns, questionAdjectives, lines);
+     formQuestion(questionNouns, questionAdjectives, "");
 
   
 
@@ -123,7 +146,7 @@
 
      let rand = Math.floor(Math.random()*nouns.length);
      let word = nouns[rand].main
-     if(word.includes("\'")){
+     if(word.includes("\'") || word === 'npr'){
          word = noun[Math.floor(Math.random()*nouns.length)].main;
      }
 
@@ -152,32 +175,32 @@
      //console.log(nouns);
 
 
-     tags.forEach((element, index) => {
+    //  tags.forEach((element, index) => {
   
-         if (element.includes("vbz")) {
-             if (split[index].length > 4) {
-                 verbs.push(split[index]);
+    //      if (element.includes("vbz")) {
+    //          if (split[index].length > 4) {
+    //              verbs.push(split[index]);
 
-             }
-         }
-         if (element.includes("jjs") || element.includes("rbs")) {
-             if (split[index].length > 4) {
-                 adj.push(split[index]);
+    //          }
+    //      }
+    //      if (element.includes("jjs") || element.includes("rbs")) {
+    //          if (split[index].length > 4) {
+    //              adj.push(split[index]);
 
-             }
-         }
+    //          }
+    //      }
 
-     });
+    //  });
 
 
-     let verb = verbs[0] ? verbs[0] : ' '
-     let noun = nouns[rand].singular ? nouns[rand].singular : ' '
+    //  let verb = verbs[0] ? verbs[0] : ' '
+    //  let noun = nouns[rand].singular ? nouns[rand].singular : ' '
 
    
-     let article = nouns[rand].article ? nouns[rand].article : 'the'
-     let adverb = adj[0] ? adj[0] : '  '
+    // //  let article = nouns[rand].article ? nouns[rand].article : 'the'
+    // //  let adverb = adj[0] ? adj[0] : '  '
      let word = bits[Math.floor(Math.random()*bits.length)];
-     noun = RiTa.stripPunctuation(noun);
+    //  noun = RiTa.stripPunctuation(noun);
 
 
     //  Pull NOUN

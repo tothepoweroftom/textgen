@@ -5,6 +5,7 @@ var colorIndex = 0;
 var timeMultiplier = 0.0005;
 window.addEventListener('load', init);
 $('body').dblclick(tweencolor);
+    
 var weight = {}
     weight.value = 2.0
 
@@ -17,7 +18,7 @@ function init() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         // some code..
         mobile = true;
-       }
+    }
     document.onmousemove = function(e){
         cursorX = e.pageX;
         cursorY = e.pageY;
@@ -34,6 +35,9 @@ function init() {
     });
     myShakeEvent.start();
 
+    if(!("ondevicemotion" in window)){alert("Not Supported");}
+
+
     window.addEventListener('shake', tweencolor, false);
 
 
@@ -47,7 +51,7 @@ function init() {
 
     scene.add(camera);
 
-    var panoTexture = new THREE.TextureLoader().load('pano.jpg');
+    var panoTexture = new THREE.TextureLoader().load('public/pano.jpg');
 
     var gn = new GyroNorm();
     var args = {
@@ -171,7 +175,7 @@ $(window).scroll(function (event) {
     var scroll = $(window).scrollTop();
 
     mesh.rotation.y = scroll/100;
-    camera.position.z = 100 + scroll/10;
+    // mesh.position.z = 0 - scroll/10;
     // Do something
 });
 
@@ -230,10 +234,13 @@ function render() {
         top:  window.innerHeight/2000 + THREE.Math.mapLinear(accelerometer.beta, -180, 180, -50, 75),
     }); 
     } else {
-        mesh.position.y = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -5, 5);
-        mesh.position.x = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -5, 5); 
-        mesh.rotation.x = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -1, 1);
-        mesh.rotation.y = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -1, 1); 
+        if(cursorX < window.innerWidth && cursorY < window.innerHeight) {
+            mesh.position.y = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -5, 5);
+            mesh.position.x = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -5, 5); 
+            mesh.rotation.x = THREE.Math.mapLinear(cursorY, window.innerHeight, 0, -1, 1);
+            mesh.rotation.y = THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -1, 1); 
+        }
+
     }
 
     renderer.render(scene, camera);

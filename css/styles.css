@@ -15,6 +15,33 @@
   color:white;
 }
 
+
+#three-container {
+  z-index: 1;
+}
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}
+
+#container {
+  width:80vw;
+  height:80vh;
+  left:10vw;
+  top:10vh;
+  pointer-events: none;
+  position:absolute;
+  text-align: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+}
+
 #app{
 	-webkit-font-smoothing:antialiased;
 	-moz-osx-font-smoothing:grayscale;
@@ -59,6 +86,8 @@ a[data-v-69fa8996]{
 
   word-wrap: break-word;
   font-size: 3vw;
+  max-width: 90%;
+  /* max */
 
 }
 
@@ -68,8 +97,8 @@ a[data-v-69fa8996]{
 
 /*Body Styles*/
 
-body{
-	background-color: "#004835";
+html, body{
+	background: "#D3D0CB";
 	font-family:'VG5000';
   overflow-y: scroll;
   overflow-x: hidden;
@@ -191,13 +220,13 @@ h1 h2 h3, a:hover{
 	z-index:1;
   position:absolute;
   top:30%;
-  width:90%;
+  width:40%;
   height:50%;
   text-align:center;
   word-wrap: break-word;
   transform:rotate(-20deg);
   font-family:'VG5000';
-	color:white;
+  color:white;
   padding:0 25% 0 38%;
 }
 
@@ -378,28 +407,32 @@ h1 h2 h3, a:hover{
     visibility: visible;
     display:block;
     width:30%;
-    margin:0 35%;
+    margin:0 25%;
+    top:0px;
   }
 
   #question {
 
     word-wrap: break-word;
-    font-size: 40px;
+    font-size: 26px;
   
   }
 
   .main-text{
-    z-index:1;
-    position:absolute;
-    top:30%;
-    width:90%;
-    height:50%;
-    text-align:center;
+    z-index: 1;
+    position: absolute;
+    overflow: hidden;
+    top: 25%;
+    left: 18%;
+    width: 65%;
+    height: 70%;
+    text-align: center;
     word-wrap: break-word;
-    transform:rotate(-20deg);
-    font-family:'VG5000';
-    color:white;
-    padding:0 0% 0 18%;
+    transform: rotate(-20deg);
+    font-family: 'VG5000';
+    color: white;
+    padding: 0 0% 0 0%;
+    /* left: 25%; */
     /* left:25%; */
   }
 }
@@ -415,7 +448,7 @@ h1 h2 h3, a:hover{
   #question {
 
     word-wrap: break-word;
-    font-size: 30px;
+    font-size: 26px;
     line-height: 1.2;
   
   }
@@ -461,6 +494,19 @@ h1 h2 h3, a:hover{
   text-transform:uppercase;
 }
 
+#tap-hold{
+  text-align:center;
+  visibility: visible;
+  width:10%;
+  top:10px;
+  margin:0% 45%;
+  position:absolute;
+  z-index:2;
+  color:black;
+  text-transform:uppercase;
+  visibility: hidden;
+}
+
 .click-hold-a{
   font-size:1em;
   letter-spacing: .1em;
@@ -477,9 +523,14 @@ h1 h2 h3, a:hover{
   font-family:'VG5000';
 }
 
+
 @media screen and (max-width: 900px) {
   #click-hold{
     visibility: hidden;
+  }
+
+  #tap-hold{
+    visibility: visible;
   }
 
 }
@@ -666,14 +717,15 @@ h1 h2 h3, a:hover{
   #cyclops {
     width:4%;
     left:48%;
-    bottom:12%;
+    bottom:7%;
   }
   #cyclops-text{
     text-align:center;
     top:auto;
-    bottom:3%;
+    bottom:0%;
     width:100%;
-    padding:0 20%;
+    left:0px;
+    /* padding:0 00%; */
     font-size:1.2em;
     line-height:1.3em;
   }
@@ -698,7 +750,7 @@ h1 h2 h3, a:hover{
     top:auto;
     bottom:3%;
     width:100%;
-    padding:0 20%;
+    padding:0 0%;
     font-size:1.2em;
     line-height:1.3em;
   }

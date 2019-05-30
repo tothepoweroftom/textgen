@@ -77,14 +77,14 @@ var waypoint = new Waypoint({
 
   })
 
-  var waypoint6 = new Waypoint({
-    element: document.getElementById('experiment'),
-    handler: function(direction) {
-        $('#social').toggleClass('open-left');
+  // var waypoint6 = new Waypoint({
+  //   element: document.getElementById('experiment'),
+  //   handler: function(direction) {
+  //       $('#social').toggleClass('open-left');
 
 
 
-    },
-    offset: window.innerHeight/2
+  //   },
+  //   offset: window.innerHeight/2
 
-  })
+  // })

@@ -27,47 +27,16 @@
 	<title>Imagination Of Things</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	 crossorigin="anonymous">
+
 
   <!-- Stylesheet -->
   <link href="css/styles.css" rel="stylesheet">
   <!-- <link href="css/main.css" rel="stylesheet"> -->
 
-  <!-- AOS Package -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
-  <!-- Orb Styles --> 
-	<style>
-		*{ box-sizing: border-box; margin: 0; padding: 0 }
 
-			#three-container {
-				z-index: 1;
-			}
-			canvas {
-				width: 100vw;
-				height: 100vh;
-				display: block;
-				position: fixed;
-				top: 0;
-				left: 0;
-				z-index: -9999;
-			}
-
-      #container {
-        width:80vw;
-        height:80vh;
-        left:10vw;
-        top:10vh;
-        pointer-events: none;
-        position:absolute;
-        text-align: left;
-        overflow: scroll;
-
-      }
-		</style>
 </head>
 
 <body>
@@ -80,7 +49,7 @@
 
             <h1 id="question" class="">
                 What if <span id="artNoun"></span> <span id="bit"></span> <span id="end"></span> ?
-              </h1> 
+            </h1> 
         </div>
 
     </div>
@@ -100,6 +69,7 @@
                  &larr; SHAKE &rarr;
             </textPath>
           </text>
+          
         </svg>
     </div>
 
@@ -107,6 +77,10 @@
     <div id="click-hold" >
       <div class="click-hold click-hold-b noselect">Double Click</div>
     </div>
+
+    <!-- <div id="tap-hold" >
+      <div class="click-hold click-hold-b noselect">Double Tap</div>
+    </div> -->
 
     <!-- What If Text -->
 
@@ -272,7 +246,7 @@
               <circle id="lens" cx="125.5" cy="78.6" r="2.9"/>
               <path id="camera" d="M79,60.5h44c10.5,0,19,8.5,19,19v44c0,10.5-8.5,19-19,19H79c-10.5,0-19-8.5-19-19v-44
                       C60,69,68.5,60.5,79,60.5z"/>
-              <circle id="bigCircle" data-aos="icon-animation" data-aos-delay="50" cx="101.2" cy="101.2" r="98.2"/>
+              <circle id="bigCircle" cx="101.2" cy="101.2" r="98.2"/>
             </svg>
           </div>
         </a>        
@@ -323,16 +297,16 @@
 
 <!-- Scripts -->
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/jquery-doubleTap.js"></script>
   <script src="js/data/text.js"></script>
   <script src="js/data/nouns.js"></script>
-
 	<script src="js/shake.js"></script>
 	<script src="js/three.min.js"></script>
 	<script src="js/OrbitControls.js"></script>
-	<script src="js/rita-small.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
+  <script src="js/gyronorm.complete.min.js"></script>
+  <script src="js/noframework.waypoints.min.js"></script>
 
 
 	<script type="x-shader/x-vertex" id="vertexShader">
@@ -604,13 +578,13 @@ float pnoise(vec3 P, vec3 rep)
 	}
 
   </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
-  <script src="js/gyronorm.complete.min.js"></script>
-  <script src="js/noframework.waypoints.min.js"></script>
+  <script src="js/rita.min.js"></script>
+
+ 
   <script src="https://unpkg.com/compromise"></script>
   <script src="js/scrambler.min.js"></script>
 	<script src="js/threescene.js"></script>
-	<script src="js/textgeneration.js"></script>
+	<script src="js/textgeneration.js" defer></script>
   <script src="js/handleWaypoints.js"></script>
 
 
