@@ -113,6 +113,14 @@
 
      console.log()
 
+    //  $('#tap-hold').fadeOut();
+
+     setInterval(() => {
+        $('#shake').fadeToggle("slow", "linear" );
+        $('#tap-hold').fadeToggle("slow", "linear" );
+        
+     }, 2000)
+
      window.addEventListener('shake', generate, false);
  });
 

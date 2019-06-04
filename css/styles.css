@@ -98,7 +98,7 @@ a[data-v-69fa8996]{
 /*Body Styles*/
 
 html, body{
-	background: "#D3D0CB";
+	background: "#D3D0CB" !important;
 	font-family:'VG5000';
   overflow-y: scroll;
   overflow-x: hidden;
@@ -224,7 +224,6 @@ h1 h2 h3, a:hover{
   height:50%;
   text-align:center;
   word-wrap: break-word;
-  transform:rotate(-20deg);
   font-family:'VG5000';
   color:white;
   padding:0 25% 0 38%;
@@ -395,6 +394,7 @@ h1 h2 h3, a:hover{
   letter-spacing:.1em;
   visibility: hidden;
   display:none;
+  position: absolute;
   z-index:-1;
 }
 
@@ -423,17 +423,21 @@ h1 h2 h3, a:hover{
     position: absolute;
     overflow: hidden;
     top: 25%;
-    left: 18%;
-    width: 65%;
+    left: 7.5%;
+    width: 85%;
     height: 70%;
     text-align: center;
     word-wrap: break-word;
-    transform: rotate(-20deg);
     font-family: 'VG5000';
     color: white;
     padding: 0 0% 0 0%;
     /* left: 25%; */
     /* left:25%; */
+  }
+
+  #follower {
+    transform: rotate(-20deg);
+    margin-top: 40px;
   }
 }
 
@@ -442,7 +446,7 @@ h1 h2 h3, a:hover{
     visibility: visible;
     display:block;
     width:50%;
-    margin:0 25%;
+    margin:-30px 25% !important;
   }
 
   #question {
@@ -495,16 +499,15 @@ h1 h2 h3, a:hover{
 }
 
 #tap-hold{
-  text-align:center;
-  visibility: visible;
-  width:10%;
-  top:10px;
-  margin:0% 45%;
-  position:absolute;
-  z-index:2;
-  color:black;
-  text-transform:uppercase;
-  visibility: hidden;
+  top: 0px;
+  position: absolute;
+  display: none;
+  width: 150px;
+  text-align: center;
+  /* margin: 0 25%; */
+  left: calc(50% - 75px);
+  /* width: 50%; */
+  /* background: red; */
 }
 
 .click-hold-a{
@@ -522,6 +525,35 @@ h1 h2 h3, a:hover{
 .click-hold{
   font-family:'VG5000';
 }
+
+
+#circle {
+  border: 1px black solid;
+  background-color: transparent;
+  height: 100px;
+  -moz-border-radius:75px;
+  -webkit-border-radius: 75px;
+  width: 100px;
+  visibility: hidden;
+}
+
+#circle p{
+text-align:center;
+padding: 14px;
+text-transform:uppercase;
+}
+
+
+@media screen and (max-width: 900px) {
+
+  #circle{
+  visibility: visible;
+  display:block;
+  margin:-110px 35% 0 35%;
+}
+}
+
+
 
 
 @media screen and (max-width: 900px) {

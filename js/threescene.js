@@ -20,12 +20,15 @@ function init() {
         mobile = true;
     }
     document.onmousemove = function(e){
-        cursorX = e.pageX;
-        cursorY = e.pageY;
-        $('#follower').css({
-               left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -100, 150),
-               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -100, 200),
-        });
+
+        if(mobile) {
+            cursorX = e.pageX;
+            cursorY = e.pageY;
+            $('#follower').css({
+                left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -100, 150),
+                top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -100, 200),
+            });
+        }   
 
     }
     // setup shaker for mobile
@@ -35,7 +38,6 @@ function init() {
     });
     myShakeEvent.start();
 
-    if(!("ondevicemotion" in window)){alert("Not Supported");}
 
 
     window.addEventListener('shake', tweencolor, false);
@@ -230,8 +232,8 @@ function render() {
     mesh.position.y = THREE.Math.mapLinear(accelerometer.beta, -180, 180, -20, 20);
     mesh.position.x = THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -20, 20);
     $('#follower').css({
-        left: 0 + THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -50, 75),
-        top:  window.innerHeight/2000 + THREE.Math.mapLinear(accelerometer.beta, -180, 180, -50, 75),
+        left: 0 + THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -30, 45),
+        top:  window.innerHeight/2000 + THREE.Math.mapLinear(accelerometer.beta, -180, 180, -30, 45),
     }); 
     } else {
         if(cursorX < window.innerWidth && cursorY < window.innerHeight) {
