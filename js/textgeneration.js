@@ -66,14 +66,21 @@
 
     $('#cyclops2').fadeOut();
 
+    $('#cyclops2').click(function() {
+
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $('#cyclops2').fadeOut();
+
+    });
+
      $(window).scroll(function() {
         //  console.log(window.scrollTop());
-        if ($(document).scrollTop() < 5) {
+        if ($(document).scrollTop() < 50) {
             $('#cyclops').fadeIn();
             $('#cyclops2').fadeOut();
 
 
-        } else {
+        } else if( $(document).scrollTop() > 50 &&  $(document).scrollTop() < 1230 ) {
             $('#cyclops').fadeOut();
 
             // $('#roboto').fadeOut();
@@ -83,11 +90,10 @@
         }
       });
      
+    //   https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=API_KEY
 
      var url =
-         "https://newsapi.org/v2/top-headlines?" +
-         "country=us&" +
-         "apiKey=9097f737932c4681bd54a2ed6a71dbf1";
+         "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=9097f737932c4681bd54a2ed6a71dbf1";
      fetch(url)
          .then(response => {
              return response.json();
