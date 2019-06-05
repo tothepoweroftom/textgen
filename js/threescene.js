@@ -18,17 +18,17 @@ function init() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         // some code..
         mobile = true;
+
     }
     document.onmousemove = function(e){
 
-        if(mobile) {
-            cursorX = e.pageX;
-            cursorY = e.pageY;
-            $('#follower').css({
-                left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -100, 150),
-                top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -100, 200),
-            });
-        }   
+        cursorX = e.pageX;
+        cursorY = e.pageY;
+        $('#follower').css({
+               left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -window.innerWidth/7, window.innerWidth/14),
+               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -window.innerHeight/10, window.innerHeight/10),
+        });
+    
 
     }
     // setup shaker for mobile
@@ -131,7 +131,7 @@ function init() {
 
 
     background = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 60), new THREE.MeshBasicMaterial({
-        color: 0xD3D0CB
+        color: 0x2963ff
     }));
     background.scale.x = -1;
     background.doubleSided = true;
@@ -170,6 +170,8 @@ function init() {
     //  });
 
     render();
+
+    $('.loading').hide();
 
 }
 

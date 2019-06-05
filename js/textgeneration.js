@@ -9,6 +9,19 @@
  const BUFFERLEN = 32;
  (function($) {
 
+    if ( WEBGL.isWebGLAvailable() ) {
+
+
+        
+
+    
+    } else {
+    
+        var warning = WEBGL.getWebGLErrorMessage();
+        document.getElementById( 'container' ).appendChild( warning );
+    
+    }
+
     // Based on https://gist.github.com/asgeo1/1652946
   
     /**
@@ -114,10 +127,12 @@
      console.log()
 
     //  $('#tap-hold').fadeOut();
+    $('#tap-hold').fadeToggle("slow", "linear" );
 
      setInterval(() => {
-        $('#shake').fadeToggle("slow", "linear" );
         $('#tap-hold').fadeToggle("slow", "linear" );
+
+        $('#shake').fadeToggle("slow", "linear" );
         
      }, 2000)
 
@@ -183,7 +198,7 @@
      let rand = Math.floor(Math.random()*nouns.length);
      let word = nouns[rand].main
      if(word.includes("\'") || word === 'npr'){
-         word = noun[Math.floor(Math.random()*nouns.length)].main;
+         word = nouns[Math.floor(Math.random()*nouns.length)].main;
      }
 
      word = RiTa.singularize(word);
