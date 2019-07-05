@@ -97,7 +97,6 @@
          "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=9097f737932c4681bd54a2ed6a71dbf1";
      fetch(url)
          .then(response => {
-            $('.loading').hide();
 
              return response.json();
          })
@@ -134,15 +133,15 @@
 
      console.log()
 
-    //  $('#tap-hold').fadeOut();
-    $('#tap-hold').fadeToggle("slow", "linear" );
+    // //  $('#tap-hold').fadeOut();
+    // $('#tap-hold').fadeToggle("slow", "linear" );
 
-     setInterval(() => {
-        $('#tap-hold').fadeToggle("slow", "linear" );
+    //  setInterval(() => {
+    //     $('#tap-hold').fadeToggle("slow", "linear" );
 
-        $('#shake').fadeToggle("slow", "linear" );
+    //     $('#shake').fadeToggle("slow", "linear" );
         
-     }, 2000)
+    //  }, 2000)
 
      window.addEventListener('shake', generate, false);
  });
