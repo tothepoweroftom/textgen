@@ -97,6 +97,8 @@
          "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=9097f737932c4681bd54a2ed6a71dbf1";
      fetch(url)
          .then(response => {
+            $('.loading').hide();
+
              return response.json();
          })
          .then(myJson => {

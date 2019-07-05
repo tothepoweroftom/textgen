@@ -100,7 +100,7 @@ a[data-v-69fa8996]{
 /*Body Styles*/
 
 html, body{
-	background: "#2963ff" !important;
+	background-color: "#383838";
 	font-family:'VG5000';
   overflow-x: hidden;
   top:0px;
@@ -247,7 +247,7 @@ h1 h2 h3, a:hover{
   text-align:center;
   /* word-wrap: break-word; */
   font-family:'VG5000';
-  color:white;
+  color:black;
   padding:0 25% 0 38%;
 }
 
@@ -454,7 +454,7 @@ h1 h2 h3, a:hover{
     text-align: center;
     word-wrap: break-word;
     font-family: 'VG5000';
-    color: white;
+    color: black;
     padding: 0 0% 0 0%;
     /* left: 25%; */
     /* left:25%; */

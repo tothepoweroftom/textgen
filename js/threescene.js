@@ -1,13 +1,13 @@
 var container, renderer, scene, camera, mesh, background, fov = 45;
 var start = Date.now();
-const PALETTE = ["#30ecf1", "#eecbad", "#2ba955", "#d4d645", "#2963ff", "#f022fe"];
+const PALETTE = ["#ffef1a", "#eecbad", "#2ba955", "#d4d645", "#2963ff", "#f022fe"];
 var colorIndex = 0;
-var timeMultiplier = 0.0005;
-window.addEventListener('load', init);
+var timeMultiplier = 0.0008;
 $('body').dblclick(tweencolor);
+setTimeout(init)
     
 var weight = {}
-    weight.value = 2.0
+    weight.value = 3.0
 
 var accelerometer = {alpha:0, beta:0, gamma:0}
 var mobile = false;
@@ -18,15 +18,25 @@ function init() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         // some code..
         mobile = true;
+        $('#instructions').text("Double tap or shake")
 
     }
+
+
+    // Hide all elements
+    $('#cyclops-text').hide();
+    $('#roboto').hide();
+    $('#follower').hide();
+    $('#click-hold').hide();
+    $('#tap-hold').hide();
+
     document.onmousemove = function(e){
 
         cursorX = e.pageX;
         cursorY = e.pageY;
         $('#follower').css({
-               left: 0 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -window.innerWidth/7, window.innerWidth/14),
-               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -window.innerHeight/10, window.innerHeight/10),
+               left: -window.innerWidth/20 + THREE.Math.mapLinear(cursorX, 0, window.innerWidth, -50, 50),
+               top:  window.innerHeight/2000 + THREE.Math.mapLinear(cursorY, 0, window.innerHeight, -20,20),
         });
     
 
@@ -68,7 +78,7 @@ function init() {
     $(window).scroll(function() {
         var height = $(window).scrollTop();
     
-        if(height  > window.innerHeight*1.5) {
+        if(height  > window.innerHeight*0.5) {
             // do something
             TweenLite.to(mesh.position, 1.0, {
                 z: -1000
@@ -131,11 +141,13 @@ function init() {
 
 
     background = new THREE.Mesh(new THREE.SphereGeometry(500, 60, 60), new THREE.MeshBasicMaterial({
-        color: 0x2963ff
+        color: "0x383838"
     }));
     background.scale.x = -1;
     background.doubleSided = true;
     scene.add(background);
+    background.material.color.set("#383838")
+
     // material = new THREE.MeshBasicMaterial({color: 0x000000});
 
     mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(20, 5), material);
@@ -168,10 +180,11 @@ function init() {
     //     }); 
 
     //  });
+    $('.loading').hide();
+
 
     render();
 
-    $('.loading').hide();
 
 }
 
@@ -185,6 +198,18 @@ $(window).scroll(function (event) {
 
 function tweencolor() {
     var col = new THREE.Color(PALETTE[colorIndex % PALETTE.length]);
+
+    // Show text
+
+    // Hide all elements
+    $('#cyclops-text').show();
+    $('#roboto').show();
+    $('#follower').show();
+    $('#click-hold').show();
+    $('#tap-hold').show();
+
+    $('#roboto-loader').hide();
+
     TweenLite.to(background.material.color, 1, {
         r: col.r,
         g: col.g,
@@ -228,8 +253,9 @@ var start = Date.now();
 
 function render() {
 
+
     material.uniforms['time'].value = timeMultiplier * (Date.now() - start);
-    material.uniforms['weight'].value = weight.value, + 1.0 * (.5 + .5 * Math.sin(.00025 * (Date.now() - start)));
+    material.uniforms['weight'].value = weight.value + 1.0 * (1.0 + .50* Math.sin(.0025 * (Date.now() - start)));
     if(mobile) {
     mesh.position.y = THREE.Math.mapLinear(accelerometer.beta, -180, 180, -20, 20);
     mesh.position.x = THREE.Math.mapLinear(accelerometer.gamma, -180, 180, -20, 20);
