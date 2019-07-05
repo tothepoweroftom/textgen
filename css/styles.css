@@ -89,6 +89,7 @@ a[data-v-69fa8996]{
   /* word-wrap: break-word; */
   font-size: 3vw;
   max-width: 90%;
+  hyphens:auto;
   /* max */
 
 }
@@ -257,7 +258,6 @@ h1 h2 h3, a:hover{
 .body-text{
   width:40%;
   background-color:white;
-  border: black 2px solid;
   padding:1.5% 3%;
   position:relative;
   opacity:0;
@@ -318,6 +318,7 @@ h1 h2 h3, a:hover{
   margin-top:100vh;
   margin-left:10%;
   left:-520px;
+  box-shadow: -8px 8px;
 }
 
 .body-text:nth-of-type(2){
@@ -325,14 +326,14 @@ h1 h2 h3, a:hover{
   margin-left:30%;
   /* left:150vw; */
   left:520px;
-
+  box-shadow: 8px 8px;
 }
 
 .body-text:nth-of-type(3){
   margin-top:30%;
   margin-left:35%;
   left:520px;
-
+  box-shadow: 8px 8px;
   /* left:150vw; */
 }
 
@@ -340,12 +341,15 @@ h1 h2 h3, a:hover{
   margin-top:30%;
   margin-left:15%;
   left:-520px;
+  box-shadow: -8px 8px;
 }
 
 .body-text:nth-of-type(5){
   margin-top:10%;
-  margin-left:30%;
+  margin-left:20%;
   left:520px;
+  box-shadow: 8px 8px;
+  width: 60%;
 }
 
 
@@ -389,7 +393,8 @@ h1 h2 h3, a:hover{
   
   .body-text:nth-of-type(5){
     margin-top:30%;
-    margin-left:10%;
+    margin-left:4%;
+    width:90%;
   }
 
 
@@ -439,7 +444,7 @@ h1 h2 h3, a:hover{
   #question {
 
     /* word-wrap: break-word; */
-    font-size: 26px;
+    font-size: 2.9em;
   
   }
 
@@ -474,14 +479,20 @@ h1 h2 h3, a:hover{
     margin:-30px 25% !important;
   }
 
-
-
   #question {
 
     /* word-wrap: break-word; */
-    font-size: 26px;
-    line-height: 1.2;
+    font-size: 2.7em;
+    line-height: 1.2em;
   
+  }
+
+  .main-text{
+    top:15%;
+  }
+
+  #follower{
+    transform: none;
   }
 
 }
@@ -518,7 +529,7 @@ h1 h2 h3, a:hover{
   text-align:center;
   visibility: visible;
   width:10%;
-  margin:8% 45%;
+  margin:1% 45% 8% 45%;
   position:absolute;
   z-index:2;
   color:black;
@@ -774,7 +785,7 @@ text-transform:uppercase;
   top:auto;
   bottom:auto;
   width:30%;
-  padding:3%;
+  padding:0 3%;
   font-size:1.8em;
   line-height:1.8em;
 }
@@ -810,12 +821,12 @@ text-transform:uppercase;
   #cyclops{
     width:8%;
     left:46%;
-    bottom: 15%;
+    bottom: 22%;
   }
   #cyclops-text{
     text-align:center;
     top:auto;
-    bottom:3%;
+    bottom:8%;
     width:100%;
     padding:0 0%;
     font-size:1.2em;
@@ -896,10 +907,8 @@ position: relative;
 
 
 #social{
-  width:40%;
-  margin-top:20%;
-  margin-left:30%;
-  padding-top:15%;
+  height:60vh;
+  padding:25% 30% 0 30%;
   background-color:transparent;
   border: none;
   color:none;
@@ -912,8 +921,8 @@ position: relative;
 @media screen and (max-width: 992px) {
 
   #social{
-    width:60%;
-    margin-left:18%;
+    height:60vh;
+    padding:30% 30% 0 30%;
   }
   #icons{
     margin:10% 20%;
@@ -925,8 +934,9 @@ position: relative;
 @media screen and (max-width: 600px) {
 
   #social{
-    width:60%;
-    margin-left:18%;
+    height:60vh;
+    padding:30% 20% 0 20%;
+
   }
   #icons{
     margin:16% 0;
