@@ -70,6 +70,7 @@
 
         $("html, body").animate({ scrollTop: 0 }, "slow");
         $('#cyclops2').fadeOut();
+        // alert("")
 
     });
 
@@ -93,7 +94,7 @@
     //   https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=API_KEY
 
      var url =
-         "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=9097f737932c4681bd54a2ed6a71dbf1";
+         "https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=9097f737932c4681bd54a2ed6a71dbf1";
      fetch(url)
          .then(response => {
              return response.json();
@@ -119,7 +120,6 @@
      $('body').doubletap(()=>{
          generate();
          tweencolor();
-         console.log("doubletap");
      });
   
         
