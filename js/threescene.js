@@ -1,6 +1,7 @@
 var container, renderer, scene, camera, mesh, background, fov = 45;
 var start = Date.now();
-const PALETTE = ["#ffef1a", "#eecbad", "#2ba955", "#d4d645", "#2963ff", "#f022fe"];
+// const PALETTE = ["#ffef1a", "#eecbad", "#2ba955", "#d4d645", "#2963ff", "#f022fe"];
+const PALETTE = [ "#fff147", "#2ba955", "#2963ff", "#f022fe", "#34acfa"];
 var colorIndex = 0;
 var timeMultiplier = 0.0008;
 $('body').dblclick(tweencolor);
@@ -18,7 +19,7 @@ function init() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         // some code..
         mobile = true;
-        $('#instructions').text("Double tap or shake")
+        $('#instruction').text("Double tap or shake")
 
     }
 
